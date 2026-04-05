@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://deuy7s0hh0x8t"]
+
+[ext_resource type="Script" uid="uid://1752hdtc3bol" path="res://Scripts/Objects/water_spout.gd" id="1_lbu0t"]
+
+[node name="WaterSpout" type="RayCast2D" unique_id=1653804384]
+collision_mask = 5
+script = ExtResource("1_lbu0t")
+
+[node name="water" type="Line2D" parent="." unique_id=136954031]
+modulate = Color(0.13725491, 1, 1, 1)
+z_index = 1
+points = PackedVector2Array(0, 0, 0, 0)
+begin_cap_mode = 2
+end_cap_mode = 2

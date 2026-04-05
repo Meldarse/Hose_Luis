@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://bic7esk5motib"]
+
+[ext_resource type="Texture2D" uid="uid://bfflc1s0jxogi" path="res://icon.svg" id="1_2u58p"]
+[ext_resource type="PackedScene" uid="uid://crvoxm3xg68np" path="res://Scenes/Objects/player.tscn" id="2_dv2c3"]
+[ext_resource type="PackedScene" uid="uid://c1gqiljs6p5l1" path="res://Scenes/Objects/box.tscn" id="3_dv2c3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a1spv"]
+size = Vector2(649.5, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sgftv"]
+size = Vector2(22.75, 350)
+
+[node name="TestScene" type="Node2D" unique_id=817119631]
+
+[node name="Floor" type="StaticBody2D" parent="." unique_id=64071209]
+position = Vector2(-21, 350)
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=1073936976]
+position = Vector2(347, 52)
+shape = SubResource("RectangleShape2D_a1spv")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Floor" unique_id=502754121]
+position = Vector2(23, -173)
+shape = SubResource("RectangleShape2D_sgftv")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Floor" unique_id=543838185]
+position = Vector2(665, -170)
+shape = SubResource("RectangleShape2D_sgftv")
+
+[node name="Wall" type="Sprite2D" parent="Floor" unique_id=1187382546]
+position = Vector2(21, -174)
+scale = Vector2(0.21875, 2.7187498)
+texture = ExtResource("1_2u58p")
+
+[node name="Wall2" type="Sprite2D" parent="Floor" unique_id=444168303]
+position = Vector2(667.00006, -172)
+scale = Vector2(0.21875, 2.7187498)
+texture = ExtResource("1_2u58p")
+
+[node name="Wall3" type="Sprite2D" parent="Floor" unique_id=9266698]
+position = Vector2(348.5, 53.000008)
+scale = Vector2(5.101563, 0.8124998)
+texture = ExtResource("1_2u58p")
+
+[node name="Player" parent="." unique_id=1403817844 instance=ExtResource("2_dv2c3")]
+position = Vector2(421, 111)
+
+[node name="Box" parent="." unique_id=1761365567 instance=ExtResource("3_dv2c3")]
+position = Vector2(176, 195)
+
+[node name="Box2" parent="." unique_id=719858904 instance=ExtResource("3_dv2c3")]
+position = Vector2(335, 165)
+
+[node name="Box3" parent="." unique_id=1658017352 instance=ExtResource("3_dv2c3")]
+position = Vector2(475, 230)

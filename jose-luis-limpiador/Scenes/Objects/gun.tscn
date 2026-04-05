@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://ct5xq75twgmob"]
+
+[ext_resource type="Script" uid="uid://dx16ifgwgl6d6" path="res://Scripts/Objects/gun.gd" id="1_2t6xs"]
+[ext_resource type="Texture2D" uid="uid://c8ranhuhld04d" path="res://Assets/Visuals 2D/Characters/tilemap_packed.png" id="1_hoiav"]
+[ext_resource type="PackedScene" uid="uid://deuy7s0hh0x8t" path="res://Scenes/Objects/water_spout.tscn" id="3_0f7tm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2t6xs"]
+atlas = ExtResource("1_hoiav")
+region = Rect2(144, 24, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0f7tm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2t6xs")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Gun" type="Node2D" unique_id=864036393]
+script = ExtResource("1_2t6xs")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1729907139]
+sprite_frames = SubResource("SpriteFrames_0f7tm")
+animation = &"idle"
+
+[node name="WaterSpout" parent="." unique_id=1653804384 instance=ExtResource("3_0f7tm")]
+target_position = Vector2(76, 0)
