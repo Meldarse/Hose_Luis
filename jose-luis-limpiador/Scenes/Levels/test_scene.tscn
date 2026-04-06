@@ -4,16 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://c1gqiljs6p5l1" path="res://Scenes/Objects/box.tscn" id="3_dv2c3"]
 [ext_resource type="PackedScene" uid="uid://bbrwo74qj3dky" path="res://Scenes/Objects/drop_spawner.tscn" id="4_a1spv"]
 [ext_resource type="Texture2D" uid="uid://b6ab5k3tg3usi" path="res://Assets/Visuals 2D/Architecture/IMG_2464.png" id="4_b3kl8"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_a1spv"]
-size = Vector2(649.5, 100)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sgftv"]
-size = Vector2(22.75, 350)
+[ext_resource type="PackedScene" uid="uid://cv41ygrw0a3ve" path="res://Scenes/Objects/interactive_tiles.tscn" id="5_b3kl8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tgibm"]
 texture = ExtResource("4_b3kl8")
 0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
 2:0/0 = 0
 3:0/0 = 0
@@ -31,25 +27,10 @@ texture = ExtResource("4_b3kl8")
 3:3/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_nlmfl"]
+physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_tgibm")
 
 [node name="TestScene" type="Node2D" unique_id=817119631]
-
-[node name="Floor" type="StaticBody2D" parent="." unique_id=64071209]
-position = Vector2(-21, 350)
-collision_mask = 6
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=1073936976]
-position = Vector2(347, 52)
-shape = SubResource("RectangleShape2D_a1spv")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Floor" unique_id=502754121]
-position = Vector2(23, -173)
-shape = SubResource("RectangleShape2D_sgftv")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Floor" unique_id=543838185]
-position = Vector2(665, -170)
-shape = SubResource("RectangleShape2D_sgftv")
 
 [node name="Player" parent="." unique_id=1403817844 instance=ExtResource("2_dv2c3")]
 position = Vector2(421, 111)
@@ -72,3 +53,6 @@ offset_bottom = 143.0
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1882039737]
 tile_map_data = PackedByteArray("AAAAABYAAAAAAAAAAAABABYAAAAAAAAAAAACABYAAAAAAAAAAAADABYAAAAAAAAAAAAEABYAAAAAAAAAAAAFABYAAAAAAAAAAAAGABYAAAAAAAAAAAAHABYAAAAAAAAAAAAIABYAAAAAAAAAAAAJABYAAAAAAAAAAAAKABYAAAAAAAAAAAALABYAAAAAAAAAAAAMABYAAAAAAAAAAAANABYAAAAAAAAAAAAOABYAAAAAAAAAAAAPABYAAAAAAAAAAAAQABYAAAAAAAAAAAARABYAAAAAAAAAAAASABYAAAAAAAAAAAATABYAAAAAAAAAAAAUABYAAAAAAAAAAAAVABYAAAAAAAAAAAAWABYAAAAAAAAAAAAXABYAAAAAAAAAAAAYABYAAAAAAAAAAAAZABYAAAAAAAAAAAAaABYAAAAAAAAAAAAbABYAAAAAAAAAAAAcABYAAAAAAAAAAAAdABYAAAAAAAAAAAAeABYAAAAAAAAAAAAfABYAAAAAAAAAAAAgABYAAAAAAAAAAAAhABYAAAAAAAAAAAAiABYAAAAAAAAAAAAjABYAAAAAAAAAAAAkABYAAAAAAAAAAAAlABYAAAAAAAAAAAAmABYAAAAAAAAAAAAnABYAAAAAAAAAAAAnABUAAAAAAAAAAAAnAAAAAAAAAAAAAAAnAAEAAAAAAAAAAAAnAAIAAAAAAAAAAAAnAAMAAAAAAAAAAAAnAAQAAAAAAAAAAAAnAAUAAAAAAAAAAAAnAAYAAAAAAAAAAAAnAAcAAAAAAAAAAAAnAAgAAAAAAAAAAAAnAAkAAAAAAAAAAAAnAAoAAAAAAAAAAAAnAAsAAAAAAAAAAAAnAAwAAAAAAAAAAAAnAA0AAAAAAAAAAAAnAA4AAAAAAAAAAAAnAA8AAAAAAAAAAAAnABAAAAAAAAAAAAAnABEAAAAAAAAAAAAnABIAAAAAAAAAAAAnABMAAAAAAAAAAAAnABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA8AAAAAAAAAAAAAABAAAAAAAAAAAAAAABEAAAAAAAAAAAAAABIAAAAAAAAAAAAAABMAAAAAAAAAAAAAABQAAAAAAAAAAAAAABUAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_nlmfl")
+
+[node name="InteractiveTiles" parent="." unique_id=609319141 instance=ExtResource("5_b3kl8")]
+tile_map_data = PackedByteArray("AAAAAAsAAAAAAAMAAAAAAAwAAAAAAAMAAAAAAA0AAAAAAAMAAAAAAA4AAAAAAAMAAAAAAA8AAAAAAAMAAAAAABAAAAAAAAMAAAAAABEAAAAAAAMAAAAAABIAAAAAAAMAAAAAABMAAAAAAAMAAAAAABQAAAAAAAMAAAAAABUAAAAAAAMAAAA=")
