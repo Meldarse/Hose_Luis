@@ -27,3 +27,6 @@ animation = &"idle"
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=2059413532]
 position = Vector2(7, -1)
+
+[node name="Bullets" type="Node2D" parent="." unique_id=1313924195]
+top_level = true
