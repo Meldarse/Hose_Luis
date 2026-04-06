@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://dx16ifgwgl6d6" path="res://Scripts/Objects/gun.gd" id="1_2t6xs"]
 [ext_resource type="Texture2D" uid="uid://c8ranhuhld04d" path="res://Assets/Visuals 2D/Characters/tilemap_packed.png" id="1_hoiav"]
-[ext_resource type="PackedScene" uid="uid://deuy7s0hh0x8t" path="res://Scenes/Objects/water_spout.tscn" id="3_0f7tm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2t6xs"]
 atlas = ExtResource("1_hoiav")
@@ -26,5 +25,5 @@ script = ExtResource("1_2t6xs")
 sprite_frames = SubResource("SpriteFrames_0f7tm")
 animation = &"idle"
 
-[node name="WaterSpout" parent="." unique_id=1653804384 instance=ExtResource("3_0f7tm")]
-target_position = Vector2(76, 0)
+[node name="Marker2D" type="Marker2D" parent="." unique_id=2059413532]
+position = Vector2(7, -1)

@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bfflc1s0jxogi" path="res://icon.svg" id="1_2u58p"]
 [ext_resource type="PackedScene" uid="uid://crvoxm3xg68np" path="res://Scenes/Objects/player.tscn" id="2_dv2c3"]
 [ext_resource type="PackedScene" uid="uid://c1gqiljs6p5l1" path="res://Scenes/Objects/box.tscn" id="3_dv2c3"]
+[ext_resource type="PackedScene" uid="uid://bbrwo74qj3dky" path="res://Scenes/Objects/drop_spawner.tscn" id="4_a1spv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a1spv"]
 size = Vector2(649.5, 100)
@@ -54,3 +55,9 @@ position = Vector2(335, 165)
 
 [node name="Box3" parent="." unique_id=1658017352 instance=ExtResource("3_dv2c3")]
 position = Vector2(475, 230)
+
+[node name="DropSpawner" parent="." unique_id=704739350 instance=ExtResource("4_a1spv")]
+offset_left = 113.0
+offset_top = 82.0
+offset_right = 234.0
+offset_bottom = 143.0

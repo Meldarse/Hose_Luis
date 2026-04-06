@@ -1,6 +1,17 @@
 [gd_scene format=3 uid="uid://se2ncgjxah2w"]
 
 [ext_resource type="Script" uid="uid://ba65wlcs205dh" path="res://Scripts/Objects/bullet.gd" id="1_cvsuj"]
+[ext_resource type="Texture2D" uid="uid://fjd0nlm3hmax" path="res://Assets/Visuals 2D/Objects/drop.png" id="2_3cvgi"]
 
-[node name="Bullet" type="Node2D" unique_id=109552350]
+[sub_resource type="CircleShape2D" id="CircleShape2D_hbw2t"]
+
+[node name="Bullet" type="Area2D" unique_id=187436094]
+collision_layer = 4
+gravity_space_override = 1
 script = ExtResource("1_cvsuj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1080589481]
+shape = SubResource("CircleShape2D_hbw2t")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=383816220]
+texture = ExtResource("2_3cvgi")

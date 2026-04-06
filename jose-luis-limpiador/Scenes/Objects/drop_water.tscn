@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://ix0tpvtqsu8k"]
+
+[ext_resource type="Script" uid="uid://bp18y0xvb181h" path="res://Scripts/Objects/drop_water.gd" id="1_8mjmk"]
+[ext_resource type="Shape2D" uid="uid://b3qued7f1xtnj" path="res://Resources/new_circle_shape_2d.tres" id="2_8mjmk"]
+[ext_resource type="SphereMesh" uid="uid://b2ggqbovaied5" path="res://Resources/new_sphere_mesh.tres" id="2_w4nbv"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4ncsa"]
+friction = 0.0
+
+[node name="DropWater" type="RigidBody2D" unique_id=872678821]
+collision_layer = 16
+collision_mask = 31
+physics_material_override = SubResource("PhysicsMaterial_4ncsa")
+script = ExtResource("1_8mjmk")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=1436777320]
+mesh = ExtResource("2_w4nbv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=819459680]
+shape = ExtResource("2_8mjmk")
+
+[node name="left" type="RayCast2D" parent="." unique_id=1271329747]
+top_level = true
+target_position = Vector2(-10, 0)
+collision_mask = 29
+
+[node name="right" type="RayCast2D" parent="." unique_id=802207482]
+top_level = true
+target_position = Vector2(10, 0)
+collision_mask = 29
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="." unique_id=627693903]
+remote_path = NodePath("../left")
+update_rotation = false
+update_scale = false
+
+[node name="RemoteTransform2D2" type="RemoteTransform2D" parent="." unique_id=127147144]
+remote_path = NodePath("../right")
+update_rotation = false
+update_scale = false
