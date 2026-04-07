@@ -5,7 +5,7 @@ extends Node2D
 @onready var bullets: Node2D = $Bullets
 
 @export var cannon_ball_scene: PackedScene
-@export var angle: float = 45.0 # en grados
+
 
  
 func _physics_process(_delta: float) -> void:

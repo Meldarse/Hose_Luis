@@ -76,8 +76,8 @@ right_click={
 2d_physics/layer_1="Environment"
 2d_physics/layer_2="Player"
 2d_physics/layer_3="Interactive"
-2d_physics/layer_4="Destroyable"
-2d_physics/layer_5="Water"
+2d_physics/layer_4="Water"
+2d_physics/layer_5="Bullet"
 
 [physics]
 

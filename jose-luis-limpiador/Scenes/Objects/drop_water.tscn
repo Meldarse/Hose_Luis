@@ -8,7 +8,7 @@
 friction = 0.0
 
 [node name="DropWater" type="RigidBody2D" unique_id=872678821]
-collision_layer = 16
+collision_layer = 8
 collision_mask = 31
 physics_material_override = SubResource("PhysicsMaterial_4ncsa")
 script = ExtResource("1_8mjmk")

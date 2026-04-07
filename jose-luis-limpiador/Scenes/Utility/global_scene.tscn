@@ -4,3 +4,5 @@
 
 [node name="GlobalScene" type="Node" unique_id=339758215]
 script = ExtResource("1_jyy7j")
+intial_power = 100
+height_penalty = 150

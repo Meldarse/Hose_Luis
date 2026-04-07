@@ -5,4 +5,5 @@
 [node name="Camera2D" type="Camera2D" unique_id=917560148]
 top_level = true
 position_smoothing_enabled = true
+position_smoothing_speed = 2.5
 script = ExtResource("1_s4mnm")
