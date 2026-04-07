@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://daenc2mb1l67d"]
+
+[ext_resource type="Script" uid="uid://b8hinkplsbe2r" path="res://Scripts/Objects/rope.gd" id="1_ig1xv"]
+
+[node name="Rope" type="Node2D" unique_id=642230958]
+script = ExtResource("1_ig1xv")
+
+[node name="Line2D" type="Line2D" parent="." unique_id=507074572]
+z_index = -1
+points = PackedVector2Array(0, 0, 0, 0)
+default_color = Color(0, 1, 0, 1)
+begin_cap_mode = 2
+end_cap_mode = 2

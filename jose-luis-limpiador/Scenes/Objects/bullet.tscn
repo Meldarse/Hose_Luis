@@ -3,7 +3,10 @@
 [ext_resource type="Script" uid="uid://ba65wlcs205dh" path="res://Scripts/Objects/bullet.gd" id="1_cvsuj"]
 [ext_resource type="Texture2D" uid="uid://b6ab5k3tg3usi" path="res://Assets/Visuals 2D/Architecture/IMG_2464.png" id="2_3cvgi"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3cvgi"]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_hbw2t"]
+radius = 5.0990195
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hbw2t"]
 atlas = ExtResource("2_3cvgi")
@@ -34,12 +37,13 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Bullet" type="Area2D" unique_id=187436094]
+[sub_resource type="CircleShape2D" id="CircleShape2D_3cvgi"]
+
+[node name="Bullet" type="RigidBody2D" unique_id=437179678]
 collision_layer = 4
 collision_mask = 4
-gravity_space_override = 1
-gravity_point_center = Vector2(0, -10)
-gravity_direction = Vector2(0, -10)
+physics_material_override = SubResource("PhysicsMaterial_3cvgi")
+gravity_scale = 0.5
 script = ExtResource("1_cvsuj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1080589481]
@@ -52,4 +56,11 @@ sprite_frames = SubResource("SpriteFrames_cvsuj")
 animation = &"bullet"
 autoplay = "bullet"
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[node name="Area2D" type="Area2D" parent="." unique_id=609890693]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=79743923]
+shape = SubResource("CircleShape2D_3cvgi")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

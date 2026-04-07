@@ -38,6 +38,7 @@ func _instantiate_grain(grain_position: Vector2, color: Color) -> void:
 
 
 func _get_color_at_pos(grain_position: Vector2) -> Color:
+	@warning_ignore("narrowing_conversion")
 	var pixel_pos := Vector2i(
 			remap(grain_position.x, 0.0, size.x, 0.0, _image.get_width()),
 			remap(grain_position.y, 0.0, size.y, 0.0, _image.get_height()))

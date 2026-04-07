@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://rkpher2bte5l"]
+
+[ext_resource type="Script" uid="uid://dscm3a7cj3jx0" path="res://Scripts/Utility/altitude_zone.gd" id="1_ufp74"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y6rm0"]
+size = Vector2(1280, 100)
+
+[node name="AltitudeZone" type="Area2D" unique_id=377734721]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_ufp74")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1903839717]
+shape = SubResource("RectangleShape2D_y6rm0")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

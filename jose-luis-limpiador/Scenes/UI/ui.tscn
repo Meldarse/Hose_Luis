@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://boht03r26um2d"]
+
+[ext_resource type="Script" uid="uid://dh5p3y560ms24" path="res://Scripts/UI/ui.gd" id="1_ahcct"]
+[ext_resource type="LabelSettings" uid="uid://kcptbattji0n" path="res://Resources/new_label_settings.tres" id="2_de23q"]
+
+[node name="UI" type="Control" unique_id=1078575033]
+custom_minimum_size = Vector2(640, 360)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ahcct")
+
+[node name="WaterPressure" type="Label" parent="." unique_id=1642429250]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -30.0
+offset_top = 10.0
+offset_right = -29.0
+offset_bottom = 33.0
+grow_horizontal = 0
+label_settings = ExtResource("2_de23q")
+
+[node name="Altitude" type="Label" parent="." unique_id=734943997]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -30.0
+offset_top = 30.0
+offset_right = -29.0
+offset_bottom = 53.0
+grow_horizontal = 0
+label_settings = ExtResource("2_de23q")
+
+[node name="FirePower" type="Label" parent="." unique_id=277041907]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -30.0
+offset_top = 50.0
+offset_right = -29.0
+offset_bottom = 73.0
+grow_horizontal = 0
+label_settings = ExtResource("2_de23q")
