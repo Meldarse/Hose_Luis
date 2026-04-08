@@ -1,32 +1,33 @@
-extends CharacterBody2D
+class_name Player extends CharacterBody2D
 
-const SPEED = 250.0
-const JUMP_VELOCITY = -400.
+@export_category("Player Stats")
+@export var SPEED = 250.0
+@export var JUMP_VELOCITY = -400.0
+@export var ACCELERATION = 1000.0
 
 @onready var body: AnimatedSprite2D = $Body
+@onready var right: RayCast2D = $Right
+@onready var left: RayCast2D = $Left
+@onready var gun: Node2D = $Gun
 
 
-func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
+var states:PlayerStateNames = PlayerStateNames.new()
 
-	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+func _physics_process(_delta: float) -> void:
+	if left.is_colliding():
+		var collider = left.get_collider()
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("move_left", "move_right")
-	if direction:
-		velocity.x = direction * SPEED
-		body.play("run")
-		if velocity.x < 0:
-			body.flip_h = true
-		else:
-			body.flip_h = false
-	else:
-		body.play("idle")
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		if collider is RigidBody2D:
+			var normal = left.get_collision_normal()
+			collider.apply_impulse(-normal * 2.5)
 
-	move_and_slide()
+	if right.is_colliding():
+		var collider = right.get_collider()
+
+		if collider is RigidBody2D:
+			var normal = right.get_collision_normal()
+			collider.apply_impulse(-normal * 2.5)
+
+
+func get_movement_direction() -> float:
+	return Input.get_axis("move_left", "move_right")

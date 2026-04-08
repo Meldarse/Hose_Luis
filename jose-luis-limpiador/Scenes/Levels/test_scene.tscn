@@ -78,4 +78,7 @@ altitude_level = 1
 position = Vector2(638, 157)
 altitude_level = 2
 
+[node name="WaterContainer" type="Node2D" parent="." unique_id=943665535]
+unique_name_in_owner = true
+
 [editable path="Player"]

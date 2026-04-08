@@ -16,15 +16,11 @@ func _physics_process(_delta: float) -> void:
 	else:
 		scale.y = 1
  
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("shoot"):
-		shoot()
-
 
 func shoot():
+	GlobalScene.water_pressure -= 5
 	var ball = cannon_ball_scene.instantiate()
 	ball.global_position = muzzle.global_position
 	var direction = muzzle.global_transform.x
-
 	ball.launch(direction)
 	bullets.add_child(ball)

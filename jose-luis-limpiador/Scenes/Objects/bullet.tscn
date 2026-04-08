@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ba65wlcs205dh" path="res://Scripts/Objects/bullet.gd" id="1_cvsuj"]
 [ext_resource type="Texture2D" uid="uid://b6ab5k3tg3usi" path="res://Assets/Visuals 2D/Architecture/IMG_2464.png" id="2_3cvgi"]
+[ext_resource type="PackedScene" uid="uid://ix0tpvtqsu8k" path="res://Scenes/Objects/drop_water.tscn" id="2_hbw2t"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3cvgi"]
 
@@ -46,6 +47,7 @@ collision_mask = 13
 physics_material_override = SubResource("PhysicsMaterial_3cvgi")
 gravity_scale = 0.5
 script = ExtResource("1_cvsuj")
+drop_water_scene = ExtResource("2_hbw2t")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1080589481]
 shape = SubResource("CircleShape2D_hbw2t")

@@ -7,6 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://daenc2mb1l67d" path="res://Scenes/Objects/rope.tscn" id="5_xbekk"]
 [ext_resource type="PackedScene" uid="uid://bkbj2jb48ot5d" path="res://Scenes/Objects/Camera2D.tscn" id="6_5uqce"]
 [ext_resource type="PackedScene" uid="uid://boht03r26um2d" path="res://Scenes/UI/ui.tscn" id="7_h6i5h"]
+[ext_resource type="PackedScene" uid="uid://c80odtbiouvpd" path="res://Scenes/Utility/state_machine.tscn" id="8_y42te"]
+[ext_resource type="Script" uid="uid://dns2tftjtowe4" path="res://Scripts/Utility/Player_resources/player_state_idle.gd" id="9_2i876"]
+[ext_resource type="Script" uid="uid://qvf00b2dkuwf" path="res://Scripts/Utility/Player_resources/player_state_running.gd" id="10_1mxid"]
+[ext_resource type="Script" uid="uid://bbrgixoy1yjqc" path="res://Scripts/Utility/Player_resources/player_state_jumping.gd" id="11_h2jbs"]
+[ext_resource type="Script" uid="uid://bywl17ydekv8d" path="res://Scripts/Utility/Player_resources/player_state_falling.gd" id="12_ea56u"]
+[ext_resource type="Script" uid="uid://c4oo3lwe3bkx" path="res://Scripts/Utility/Player_resources/player_state_shooting.gd" id="13_8ietw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kvv6r"]
 size = Vector2(20, 22)
@@ -53,8 +59,9 @@ shape = SubResource("RectangleShape2D_kvv6r")
 [node name="Body" type="AnimatedSprite2D" parent="." unique_id=1832928101]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_h6i5h")
-animation = &"idle"
+animation = &"run"
 autoplay = "idle"
+frame_progress = 0.23886251
 
 [node name="Gun" parent="." unique_id=864036393 instance=ExtResource("4_dfgsd")]
 position = Vector2(0, 5)
@@ -74,3 +81,31 @@ offset_left = -320.0
 offset_top = -180.0
 offset_right = 320.0
 offset_bottom = 180.0
+
+[node name="Right" type="RayCast2D" parent="." unique_id=243114699]
+position = Vector2(0, 10)
+target_position = Vector2(40, 0)
+collision_mask = 8
+
+[node name="Left" type="RayCast2D" parent="." unique_id=1806301729]
+position = Vector2(0, 10)
+target_position = Vector2(-40, 0)
+collision_mask = 8
+
+[node name="StateMachine" parent="." unique_id=206004740 node_paths=PackedStringArray("default_state") instance=ExtResource("8_y42te")]
+default_state = NodePath("PlayerStateIdle")
+
+[node name="PlayerStateIdle" type="Node" parent="StateMachine" unique_id=915947698]
+script = ExtResource("9_2i876")
+
+[node name="PlayerStateRunning" type="Node" parent="StateMachine" unique_id=304749485]
+script = ExtResource("10_1mxid")
+
+[node name="PlayerStateJumping" type="Node" parent="StateMachine" unique_id=1539095000]
+script = ExtResource("11_h2jbs")
+
+[node name="PlayerStateFalling" type="Node" parent="StateMachine" unique_id=383931281]
+script = ExtResource("12_ea56u")
+
+[node name="PlayerStateShooting" type="Node" parent="StateMachine" unique_id=1685136331]
+script = ExtResource("13_8ietw")
