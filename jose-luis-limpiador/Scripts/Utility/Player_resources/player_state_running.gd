@@ -25,6 +25,8 @@ func on_physics_process(delta):
 	if not controlled_node.is_on_floor():
 		state_machine.change_to(player.states.Falling)
 
-func on_input(_event):
-	if Input.is_action_just_pressed("jump"): 
+func on_input(event):
+	if event.is_action_pressed("jump"): 
 		state_machine.change_to(player.states.Jumping)
+	elif event.is_action_pressed("shoot"):
+		state_machine.change_to(player.states.Shooting)

@@ -14,10 +14,10 @@ func _ready() -> void:
 	grain_sphere_mesh.height = Drop.DIAMETER + Drop.MESH_SIZE_OFFSET
 	
 
-func _gui_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.pressed == true:
-		_generate_sand()
-		queue_free()
+#func _gui_input(event: InputEvent) -> void:
+	#if event is InputEventMouseButton and event.pressed == true:
+		#_generate_sand()
+		#queue_free()
 
 
 func _generate_sand() -> void:
@@ -43,3 +43,8 @@ func _get_color_at_pos(grain_position: Vector2) -> Color:
 			remap(grain_position.x, 0.0, size.x, 0.0, _image.get_width()),
 			remap(grain_position.y, 0.0, size.y, 0.0, _image.get_height()))
 	return _image.get_pixelv(pixel_pos)
+
+
+func _on_area_2d_body_entered(_body: Node2D) -> void:
+	_generate_sand()
+	queue_free()

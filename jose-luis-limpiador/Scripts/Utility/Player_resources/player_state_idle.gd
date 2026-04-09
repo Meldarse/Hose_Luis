@@ -4,8 +4,8 @@ extends PlayerStateBase
 func start():
 	player.body.play("idle")
 
-func on_physics_process(_delta):
-	player.velocity.x = move_toward(player.velocity.x, 0, player.SPEED)
+func on_physics_process(delta):
+	player.velocity.x = move_toward(player.velocity.x, 0, player.SPEED * delta * 5.0)
 
 	controlled_node.move_and_slide()
 
@@ -14,6 +14,7 @@ func on_physics_process(_delta):
 
 	if player.get_movement_direction():
 		state_machine.change_to(player.states.Running)
+
 
 func on_input(event):
 	if event.is_action_pressed("jump"):  

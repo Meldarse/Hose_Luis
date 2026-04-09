@@ -12,11 +12,7 @@ func launch(direction: Vector2):
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body is TileMapLayer and body.has_method("clean") and not impact:
-		impact = true
-		body.clean(global_position)
-		call_deferred("queue_free")
-	elif body != self and not impact:
+	if body != self and impact == false:
 		impact = true
 		var main_scene = get_tree().current_scene
 		var water_container = main_scene.get_node("%WaterContainer")
@@ -25,3 +21,9 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		drop_water.set_color(Color.SKY_BLUE)
 		water_container.call_deferred("add_child", drop_water)
 		call_deferred("queue_free")
+
+
+func _on_visible_on_screen_enabler_2d_screen_exited() -> void:
+	print("bala fuera")
+	GlobalScene.water_pressure += 5
+	queue_free()
