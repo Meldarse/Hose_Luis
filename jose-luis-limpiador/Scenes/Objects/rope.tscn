@@ -8,6 +8,7 @@ script = ExtResource("1_ig1xv")
 [node name="Line2D" type="Line2D" parent="." unique_id=507074572]
 z_index = -1
 points = PackedVector2Array(0, 0, 0, 0)
-default_color = Color(0, 1, 0, 1)
+width = 3.0
+default_color = Color(0.8645385, 0.6549681, 0.12558651, 1)
 begin_cap_mode = 2
 end_cap_mode = 2

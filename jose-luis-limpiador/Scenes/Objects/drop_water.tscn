@@ -6,19 +6,23 @@
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4ncsa"]
 friction = 0.0
+bounce = 0.14
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w4nbv"]
 
 [node name="DropWater" type="RigidBody2D" unique_id=872678821]
 collision_layer = 8
 collision_mask = 31
+mass = 0.2
 physics_material_override = SubResource("PhysicsMaterial_4ncsa")
 script = ExtResource("1_8mjmk")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=1436777320]
+scale = Vector2(0.5, 0.5)
 mesh = ExtResource("2_w4nbv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=819459680]
+scale = Vector2(0.5, 0.5)
 shape = ExtResource("2_8mjmk")
 
 [node name="left" type="RayCast2D" parent="." unique_id=1271329747]

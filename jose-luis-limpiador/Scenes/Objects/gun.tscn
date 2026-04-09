@@ -24,6 +24,8 @@ script = ExtResource("1_2t6xs")
 cannon_ball_scene = ExtResource("2_0f7tm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1729907139]
+position = Vector2(4.0000005, 0)
+scale = Vector2(0.8013858, 0.51925296)
 sprite_frames = SubResource("SpriteFrames_0f7tm")
 animation = &"idle"
 

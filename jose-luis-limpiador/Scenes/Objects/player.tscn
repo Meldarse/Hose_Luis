@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://crvoxm3xg68np"]
 
 [ext_resource type="Script" uid="uid://bafw3afu6bta7" path="res://Scripts/Objects/player.gd" id="1_kvv6r"]
-[ext_resource type="Texture2D" uid="uid://brs8rwibqlkr1" path="res://Assets/Visuals 2D/Characters/tile_0045.png" id="2_xbekk"]
-[ext_resource type="Texture2D" uid="uid://bsvs7dawt2ci6" path="res://Assets/Visuals 2D/Characters/tile_0046.png" id="3_5uqce"]
 [ext_resource type="PackedScene" uid="uid://ct5xq75twgmob" path="res://Scenes/Objects/gun.tscn" id="4_dfgsd"]
+[ext_resource type="Texture2D" uid="uid://dab7vh0jub7r7" path="res://Assets/Visuals 2D/Characters/Hose_1.png" id="4_ea56u"]
+[ext_resource type="Texture2D" uid="uid://cqnb2f2kdm7bh" path="res://Assets/Visuals 2D/Characters/Hose_2.png" id="5_8ietw"]
 [ext_resource type="PackedScene" uid="uid://daenc2mb1l67d" path="res://Scenes/Objects/rope.tscn" id="5_xbekk"]
 [ext_resource type="PackedScene" uid="uid://bkbj2jb48ot5d" path="res://Scenes/Objects/Camera2D.tscn" id="6_5uqce"]
 [ext_resource type="PackedScene" uid="uid://boht03r26um2d" path="res://Scenes/UI/ui.tscn" id="7_h6i5h"]
@@ -21,7 +21,7 @@ size = Vector2(20, 22)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_xbekk")
+"texture": ExtResource("5_8ietw")
 }],
 "loop": true,
 "name": &"idle",
@@ -29,7 +29,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_5uqce")
+"texture": ExtResource("4_ea56u")
 }],
 "loop": true,
 "name": &"jump",
@@ -37,10 +37,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_5uqce")
+"texture": ExtResource("4_ea56u")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_xbekk")
+"texture": ExtResource("5_8ietw")
 }],
 "loop": true,
 "name": &"run",
@@ -57,14 +57,12 @@ position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_kvv6r")
 
 [node name="Body" type="AnimatedSprite2D" parent="." unique_id=1832928101]
-scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_h6i5h")
-animation = &"run"
+animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.23886251
 
 [node name="Gun" parent="." unique_id=864036393 instance=ExtResource("4_dfgsd")]
-position = Vector2(0, 5)
+position = Vector2(0, 4)
 
 [node name="Rope" parent="." unique_id=642230958 node_paths=PackedStringArray("end_point") instance=ExtResource("5_xbekk")]
 end_point = NodePath("..")
@@ -72,15 +70,15 @@ end_point = NodePath("..")
 [node name="Camera2D" parent="." unique_id=917560148 instance=ExtResource("6_5uqce")]
 
 [node name="UI" parent="Camera2D" unique_id=1078575033 instance=ExtResource("7_h6i5h")]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
 offset_left = -320.0
-offset_top = -180.0
+offset_top = -187.0
 offset_right = 320.0
-offset_bottom = 180.0
+offset_bottom = 173.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="Right" type="RayCast2D" parent="." unique_id=243114699]
 position = Vector2(0, 10)
