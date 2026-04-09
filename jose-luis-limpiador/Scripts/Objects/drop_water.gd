@@ -26,9 +26,3 @@ func _physics_process(delta: float) -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body != self and body.has_method("clean"):
 		body.clean(global_position)
-
-
-func _on_visible_on_screen_enabler_2d_screen_exited() -> void:
-	print("agua fuera")
-	GlobalScene.water_pressure += 5
-	queue_free()

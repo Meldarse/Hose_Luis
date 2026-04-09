@@ -11,7 +11,6 @@ func on_physics_process(delta):
 		direction * player.SPEED,
 		player.ACCELERATION * delta)
 
-
 	controlled_node.move_and_slide()
 
 	if player.velocity.x < 0:

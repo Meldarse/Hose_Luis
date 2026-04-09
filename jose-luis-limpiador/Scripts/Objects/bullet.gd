@@ -21,9 +21,3 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		drop_water.set_color(Color.SKY_BLUE)
 		water_container.call_deferred("add_child", drop_water)
 		call_deferred("queue_free")
-
-
-func _on_visible_on_screen_enabler_2d_screen_exited() -> void:
-	print("bala fuera")
-	GlobalScene.water_pressure += 5
-	queue_free()
