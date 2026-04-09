@@ -4,7 +4,7 @@
 [ext_resource type="LabelSettings" uid="uid://kcptbattji0n" path="res://Resources/new_label_settings.tres" id="2_de23q"]
 
 [node name="UI" type="Control" unique_id=1078575033]
-custom_minimum_size = Vector2(640, 360)
+custom_minimum_size = Vector2(384, 216)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,10 +18,10 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -30.0
-offset_top = 10.0
-offset_right = -29.0
-offset_bottom = 33.0
+offset_left = -16.0
+offset_top = 6.0
+offset_right = -15.0
+offset_bottom = 29.0
 grow_horizontal = 0
 label_settings = ExtResource("2_de23q")
 
@@ -30,10 +30,10 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -30.0
-offset_top = 30.0
-offset_right = -29.0
-offset_bottom = 53.0
+offset_left = -16.0
+offset_top = 19.0
+offset_right = -15.0
+offset_bottom = 42.0
 grow_horizontal = 0
 label_settings = ExtResource("2_de23q")
 
@@ -42,17 +42,17 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -30.0
-offset_top = 50.0
-offset_right = -29.0
-offset_bottom = 73.0
+offset_left = -16.0
+offset_top = 32.0
+offset_right = -15.0
+offset_bottom = 55.0
 grow_horizontal = 0
 label_settings = ExtResource("2_de23q")
 
 [node name="Grime" type="Label" parent="." unique_id=370489562]
 layout_mode = 1
-offset_left = 50.0
-offset_top = 10.0
-offset_right = 51.0
-offset_bottom = 33.0
+offset_left = 10.0
+offset_top = 8.0
+offset_right = 11.0
+offset_bottom = 31.0
 label_settings = ExtResource("2_de23q")
