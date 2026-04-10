@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://cv41ygrw0a3ve" path="res://Scenes/Objects/interactive_tiles.tscn" id="5_b3kl8"]
 [ext_resource type="PackedScene" uid="uid://hd32beternkd" path="res://Scenes/Objects/drainage.tscn" id="5_tgibm"]
 [ext_resource type="PackedScene" uid="uid://rkpher2bte5l" path="res://Scenes/Utility/altitude_zone.tscn" id="6_tgibm"]
-[ext_resource type="AudioStream" uid="uid://cv6oec3ji28m6" path="res://Assets/OST/Juhani Junkala [Chiptune Adventures] 2. Stage 2.ogg" id="8_utwxg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tgibm"]
 texture = ExtResource("4_b3kl8")
@@ -86,10 +85,5 @@ altitude_level = 2
 
 [node name="WaterContainer" type="Node2D" parent="." unique_id=943665535]
 unique_name_in_owner = true
-
-[node name="Music" type="AudioStreamPlayer" parent="." unique_id=799459539]
-stream = ExtResource("8_utwxg")
-volume_db = -8.0
-autoplay = true
 
 [editable path="Player"]

@@ -2,23 +2,21 @@ class_name Player
 extends CharacterBody2D
 
 @export_category("Player Stats")
-@export var SPEED = 250.0
-@export var JUMP_VELOCITY = -400.0
+@export var SPEED = 120.0
+@export var JUMP_VELOCITY = -300.0
 @export var ACCELERATION = 1000.0
 @export var BULLET_INTERVALS = 0.1
 @export var GUN_ROTATION = 5
 
 @export_category("Jump Feel")
-@export var GRAVITY_UP: float = 1200.0
-@export var GRAVITY_DOWN: float = 1800.0
-@export var JUMP_CUT_MULTIPLIER: float = 0.45
-@export var MAX_FALL_SPEED: float = 900.0
+@export var GRAVITY_UP: float = 10.0
+@export var GRAVITY_DOWN: float = 18.0
+@export var JUMP_CUT_MULTIPLIER: float = 0.35
+@export var MAX_FALL_SPEED: float = 850.0
 
 @export_category("Jump Helpers")
 @export var COYOTE_TIME: float = 0.10
 @export var JUMP_BUFFER_TIME: float = 0.10
-
-
 
 @onready var body: AnimatedSprite2D = $Body
 @onready var gun: Node2D = $Gun
