@@ -24,8 +24,8 @@ texture = ExtResource("1_ng5cc")
 3:3/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_osii4"]
-physics_layer_0/collision_layer = 4
-physics_layer_0/collision_mask = 24
+physics_layer_0/collision_layer = 8
+physics_layer_0/collision_mask = 20
 sources/0 = SubResource("TileSetAtlasSource_it00p")
 
 [node name="InteractiveTiles" type="TileMapLayer" unique_id=609319141]

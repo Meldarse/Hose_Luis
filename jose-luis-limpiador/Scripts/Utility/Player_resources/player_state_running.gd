@@ -2,7 +2,8 @@ extends PlayerStateBase
 
 
 func start():
-	player.body.play("run")
+	player.animation_player.play("run")
+
 
 func on_physics_process(delta):
 	var direction = player.get_movement_direction()
@@ -29,3 +30,6 @@ func on_input(event):
 		state_machine.change_to(player.states.Jumping)
 	elif event.is_action_pressed("shoot"):
 		state_machine.change_to(player.states.Shooting)
+
+func end():
+	player.animation_player.stop()

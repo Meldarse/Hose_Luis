@@ -14,4 +14,5 @@ func clean(my_position: Vector2) -> void:
 		for y in range(-1, 2):
 			erase_cell(center_tile + Vector2i(x, y))
 
-	GlobalScene.clean_front = value - get_used_cells().size()
+
+	GlobalScene.clean_back = value - get_used_cells().size()

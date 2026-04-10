@@ -14,7 +14,13 @@ func on_physics_process(delta):
 		accel * delta)
 
 	if player.velocity.y >= 0 and player.is_on_floor(): 
+		player.animation_player.play("landing")
 		state_machine.change_to(player.states.Idle)
 	
 
 	controlled_node.move_and_slide()
+
+
+func on_input(event):
+	if event.is_action_pressed("shoot"):
+		state_machine.change_to(player.states.Shooting)

@@ -10,9 +10,48 @@ bounce = 0.14
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w4nbv"]
 
+[sub_resource type="Animation" id="Animation_w4nbv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, 0.5)]
+}
+
+[sub_resource type="Animation" id="Animation_lwhf6"]
+resource_name = "on_air"
+length = 0.3
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.2, 0.25),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5, 0.5),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(0.625, 0.325), Vector2(0.325, 0.625), Vector2(0.5, 0.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uy20c"]
+_data = {
+&"RESET": SubResource("Animation_w4nbv"),
+&"on_air": SubResource("Animation_lwhf6")
+}
+
 [node name="DropWater" type="RigidBody2D" unique_id=872678821]
-collision_layer = 8
-collision_mask = 31
+collision_layer = 16
+collision_mask = 29
 mass = 0.2
 physics_material_override = SubResource("PhysicsMaterial_4ncsa")
 script = ExtResource("1_8mjmk")
@@ -45,9 +84,12 @@ update_scale = false
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1367156323]
 collision_layer = 0
-collision_mask = 4
+collision_mask = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=361309709]
 shape = SubResource("CircleShape2D_w4nbv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1782360698]
+libraries/ = SubResource("AnimationLibrary_uy20c")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

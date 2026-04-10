@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bfbhjct6p1hh7" path="res://Scripts/Objects/drainage.gd" id="1_7ug80"]
 [ext_resource type="Texture2D" uid="uid://b6ab5k3tg3usi" path="res://Assets/Visuals 2D/Architecture/IMG_2464.png" id="1_e1j6n"]
+[ext_resource type="AudioStream" uid="uid://bm2h2nj3ne6sx" path="res://Assets/SFX/geA8slSY.wav" id="3_lehg0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7ug80"]
 
@@ -22,6 +23,44 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e1j6n"]
 
+[sub_resource type="Animation" id="Animation_lehg0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_k6m8u"]
+resource_name = "upgrade"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 0.8), Vector2(0.8, 1.2), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hkum0"]
+_data = {
+&"RESET": SubResource("Animation_lehg0"),
+&"upgrade": SubResource("Animation_k6m8u")
+}
+
 [node name="Drainage" type="StaticBody2D" unique_id=1113187961]
 collision_layer = 0
 collision_mask = 0
@@ -38,10 +77,16 @@ animation = &"idle"
 
 [node name="Area2D" type="Area2D" parent="." unique_id=211740128]
 collision_layer = 0
-collision_mask = 8
+collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1979664382]
 position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_e1j6n")
+
+[node name="upgradeSFX" type="AudioStreamPlayer" parent="." unique_id=588326307]
+stream = ExtResource("3_lehg0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1599401501]
+libraries/ = SubResource("AnimationLibrary_hkum0")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

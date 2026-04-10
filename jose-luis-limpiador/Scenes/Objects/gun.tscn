@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" uid="uid://dx16ifgwgl6d6" path="res://Scripts/Objects/gun.gd" id="1_2t6xs"]
 [ext_resource type="Texture2D" uid="uid://c8ranhuhld04d" path="res://Assets/Visuals 2D/Characters/tilemap_packed.png" id="1_hoiav"]
-[ext_resource type="PackedScene" uid="uid://se2ncgjxah2w" path="res://Scenes/Objects/bullet.tscn" id="2_0f7tm"]
+[ext_resource type="PackedScene" uid="uid://ix0tpvtqsu8k" path="res://Scenes/Objects/drop_water.tscn" id="2_0f7tm"]
+[ext_resource type="AudioStream" uid="uid://e3n48dl128h7" path="res://Assets/SFX/o-rOKfyt.wav" id="4_27o52"]
+[ext_resource type="AudioStream" uid="uid://cslnydyd7rhe8" path="res://Assets/SFX/W4l8NPEI.wav" id="5_112hy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2t6xs"]
 atlas = ExtResource("1_hoiav")
@@ -21,16 +23,21 @@ animations = [{
 
 [node name="Gun" type="Node2D" unique_id=864036393]
 script = ExtResource("1_2t6xs")
-cannon_ball_scene = ExtResource("2_0f7tm")
+drop_water_scene = ExtResource("2_0f7tm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1729907139]
-position = Vector2(4.0000005, 0)
+rotation = -3.9269907
 scale = Vector2(0.8013858, 0.51925296)
 sprite_frames = SubResource("SpriteFrames_0f7tm")
 animation = &"idle"
+offset = Vector2(9.035, 0)
+flip_v = true
 
-[node name="Marker2D" type="Marker2D" parent="." unique_id=2059413532]
-position = Vector2(22, -1)
+[node name="Marker2D" type="Marker2D" parent="AnimatedSprite2D" unique_id=2059413532]
+position = Vector2(21, 0)
 
-[node name="Bullets" type="Node2D" parent="." unique_id=1313924195]
-top_level = true
+[node name="ShootSFX" type="AudioStreamPlayer" parent="." unique_id=1941818099]
+stream = ExtResource("4_27o52")
+
+[node name="EmptySFX" type="AudioStreamPlayer" parent="." unique_id=1328320574]
+stream = ExtResource("5_112hy")

@@ -1,26 +1,34 @@
 extends Node2D
 
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var muzzle: Marker2D = $AnimatedSprite2D/Marker2D
+@onready var shoot_sfx: AudioStreamPlayer = $ShootSFX
+@onready var empty_sfx: AudioStreamPlayer = $EmptySFX
 
-@onready var muzzle: Marker2D = $Marker2D
-@onready var bullets: Node2D = $Bullets
 
-@export var cannon_ball_scene: PackedScene
+@export var drop_water_scene: PackedScene
 
 var in_use: bool = false
 
-func _physics_process(_delta: float) -> void:
-	rotation_degrees = wrap(rotation_degrees, 0, 360)
-	if rotation_degrees > 90 and rotation_degrees < 270:
-		scale.y = -1
-	else:
-		scale.y = 1
+#func _physics_process(_delta: float) -> void:
+	#rotation_degrees = wrap(rotation_degrees, 0, 360)
+	#if rotation_degrees > 0 and rotation_degrees < 135:
+		#animated_sprite_2d.flip_h = true
+	#else:
+		#animated_sprite_2d.flip_h = false
 
 
 func shoot():
 	if GlobalScene.water_pressure > 0 and GlobalScene.fire_power > 0:
+		shoot_sfx.play()
 		GlobalScene.water_pressure -= 5
-		var ball = cannon_ball_scene.instantiate()
-		ball.global_position = muzzle.global_position
+		var main_scene = get_tree().current_scene
+		var water_container = main_scene.get_node("%WaterContainer")
+		var drop_water = drop_water_scene.instantiate()
 		var direction = muzzle.global_transform.x
-		ball.launch(direction)
-		bullets.add_child(ball)
+		drop_water.launch(direction)
+		drop_water.global_position = muzzle.global_position
+		drop_water.set_color(Color.SKY_BLUE)
+		water_container.call_deferred("add_child", drop_water)
+	else:
+		empty_sfx.play()

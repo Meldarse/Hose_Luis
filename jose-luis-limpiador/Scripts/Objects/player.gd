@@ -2,10 +2,11 @@ class_name Player
 extends CharacterBody2D
 
 @export_category("Player Stats")
-@export var SPEED: float = 250.0
-@export var JUMP_VELOCITY: float = -400.0
-@export var ACCELERATION: float = 1000.0
-@export var BULLET_INTERVALS: float = 0.1
+@export var SPEED = 250.0
+@export var JUMP_VELOCITY = -400.0
+@export var ACCELERATION = 1000.0
+@export var BULLET_INTERVALS = 0.1
+@export var GUN_ROTATION = 5
 
 @export_category("Jump Feel")
 @export var GRAVITY_UP: float = 1200.0
@@ -17,10 +18,14 @@ extends CharacterBody2D
 @export var COYOTE_TIME: float = 0.10
 @export var JUMP_BUFFER_TIME: float = 0.10
 
+
+
 @onready var body: AnimatedSprite2D = $Body
-@onready var right: RayCast2D = $Right
-@onready var left: RayCast2D = $Left
 @onready var gun: Node2D = $Gun
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var jump_sfx: AudioStreamPlayer = $JumpSFX
+@onready var step_sfx: AudioStreamPlayer = $StepSFX
+
 
 var states: PlayerStateNames = PlayerStateNames.new()
 
@@ -28,27 +33,11 @@ var coyote_timer: float = 0.0
 var jump_buffer_timer: float = 0.0
 
 
+
 func _physics_process(delta: float) -> void:
 	_update_jump_timers(delta)
 	_apply_variable_gravity(delta)
 	_apply_jump_cut()
-	_apply_push_impulses()
-
-
-func _apply_push_impulses() -> void:
-	if left.is_colliding():
-		var collider = left.get_collider()
-
-		if collider is RigidBody2D:
-			var normal = left.get_collision_normal()
-			collider.apply_impulse(-normal * 2.5)
-
-	if right.is_colliding():
-		var collider = right.get_collider()
-
-		if collider is RigidBody2D:
-			var normal = right.get_collision_normal()
-			collider.apply_impulse(-normal * 2.5)
 
 
 func _update_jump_timers(delta: float) -> void:
@@ -78,6 +67,7 @@ func _apply_variable_gravity(delta: float) -> void:
 func _apply_jump_cut() -> void:
 	if Input.is_action_just_released("jump") and velocity.y < 0.0:
 		velocity.y *= JUMP_CUT_MULTIPLIER
+
 
 
 func get_movement_direction() -> float:

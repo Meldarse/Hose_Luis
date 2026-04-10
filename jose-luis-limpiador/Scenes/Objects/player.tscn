@@ -13,6 +13,8 @@
 [ext_resource type="Script" uid="uid://bbrgixoy1yjqc" path="res://Scripts/Utility/Player_resources/player_state_jumping.gd" id="11_h2jbs"]
 [ext_resource type="Script" uid="uid://bywl17ydekv8d" path="res://Scripts/Utility/Player_resources/player_state_falling.gd" id="12_ea56u"]
 [ext_resource type="Script" uid="uid://c4oo3lwe3bkx" path="res://Scripts/Utility/Player_resources/player_state_shooting.gd" id="13_8ietw"]
+[ext_resource type="AudioStream" uid="uid://bk8bt20a3adch" path="res://Assets/SFX/hBlYqwzX.wav" id="14_h2jbs"]
+[ext_resource type="AudioStream" uid="uid://b8qc2v33o0svj" path="res://Assets/SFX/pickupCoin.wav" id="15_ea56u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kvv6r"]
 size = Vector2(20, 22)
@@ -47,9 +49,148 @@ animations = [{
 "speed": 7.0
 }]
 
+[sub_resource type="Animation" id="Animation_1mxid"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Body:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("StepSFX:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_h2jbs"]
+resource_name = "jump"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 0.8), Vector2(0.8, 1.2), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ea56u"]
+resource_name = "landing"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.049999997, 0.099999994),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 0.8), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_8ietw"]
+resource_name = "run"
+length = 0.33333668
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"run"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.16666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("StepSFX:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.16666667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8ietw"]
+_data = {
+&"RESET": SubResource("Animation_1mxid"),
+&"jump": SubResource("Animation_h2jbs"),
+&"landing": SubResource("Animation_ea56u"),
+&"run": SubResource("Animation_8ietw")
+}
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8ietw"]
+random_pitch = 1.2599211
+streams_count = 1
+stream_0/stream = ExtResource("15_ea56u")
+
 [node name="Player" type="CharacterBody2D" unique_id=1403817844]
-collision_layer = 2
-collision_mask = 29
+collision_layer = 4
+collision_mask = 9
 script = ExtResource("1_kvv6r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=135963831]
@@ -80,16 +221,6 @@ offset_bottom = 173.0
 grow_horizontal = 1
 grow_vertical = 1
 
-[node name="Right" type="RayCast2D" parent="." unique_id=243114699]
-position = Vector2(0, 10)
-target_position = Vector2(40, 0)
-collision_mask = 8
-
-[node name="Left" type="RayCast2D" parent="." unique_id=1806301729]
-position = Vector2(0, 10)
-target_position = Vector2(-40, 0)
-collision_mask = 8
-
 [node name="StateMachine" parent="." unique_id=206004740 node_paths=PackedStringArray("default_state") instance=ExtResource("8_y42te")]
 default_state = NodePath("PlayerStateIdle")
 
@@ -107,3 +238,14 @@ script = ExtResource("12_ea56u")
 
 [node name="PlayerStateShooting" type="Node" parent="StateMachine" unique_id=1685136331]
 script = ExtResource("13_8ietw")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1841312042]
+libraries/ = SubResource("AnimationLibrary_8ietw")
+
+[node name="JumpSFX" type="AudioStreamPlayer" parent="." unique_id=2022981021]
+stream = ExtResource("14_h2jbs")
+volume_db = -12.0
+
+[node name="StepSFX" type="AudioStreamPlayer" parent="." unique_id=1311858051]
+stream = SubResource("AudioStreamRandomizer_8ietw")
+volume_db = -8.0

@@ -2,6 +2,7 @@ extends PlayerStateBase
 
 
 func start():
+	player.animation_player.play("RESET")
 	player.body.play("idle")
 
 func on_physics_process(delta):
