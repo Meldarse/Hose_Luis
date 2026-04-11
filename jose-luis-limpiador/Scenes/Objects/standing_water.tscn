@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://e02glsccgo17"]
+
+[ext_resource type="Script" uid="uid://c2a836mwx83oj" path="res://Scripts/Objects/standing_water.gd" id="1_p2v2i"]
+[ext_resource type="Texture2D" uid="uid://dep5wikbcwq46" path="res://Assets/Visuals 2D/Architecture/water_texture.png" id="2_u7p8j"]
+[ext_resource type="PackedScene" uid="uid://ix0tpvtqsu8k" path="res://Scenes/Objects/drop_water.tscn" id="3_2ngma"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0cdt6"]
+resource_local_to_scene = true
+
+[node name="StandingWater" type="Node2D" unique_id=138579272]
+script = ExtResource("1_p2v2i")
+texture_water = ExtResource("2_u7p8j")
+drop_scene = ExtResource("3_2ngma")
+
+[node name="Detector" type="Area2D" parent="." unique_id=123767002]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionDetector" type="CollisionShape2D" parent="Detector" unique_id=1314670440]
+shape = SubResource("RectangleShape2D_0cdt6")
+
+[connection signal="body_entered" from="Detector" to="." method="_on_detector_body_entered"]

@@ -24,6 +24,8 @@ GlobalScene="*uid://86puqja5eawn"
 
 window/size/viewport_width=384
 window/size/viewport_height=216
+window/size/window_width_override=1440
+window/size/window_height_override=810
 window/stretch/mode="canvas_items"
 
 [file_customization]

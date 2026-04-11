@@ -28,7 +28,6 @@ func shoot():
 		var direction = muzzle.global_transform.x
 		drop_water.launch(direction)
 		drop_water.global_position = muzzle.global_position
-		drop_water.set_color(Color.SKY_BLUE)
 		water_container.call_deferred("add_child", drop_water)
 	else:
 		empty_sfx.play()

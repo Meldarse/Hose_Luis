@@ -211,15 +211,15 @@ end_point = NodePath("..")
 [node name="Camera2D" parent="." unique_id=917560148 instance=ExtResource("6_5uqce")]
 
 [node name="UI" parent="Camera2D" unique_id=1078575033 instance=ExtResource("7_h6i5h")]
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = -320.0
-offset_top = -187.0
-offset_right = 320.0
-offset_bottom = 173.0
-grow_horizontal = 1
-grow_vertical = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -192.0
+offset_top = -108.0
+offset_right = 192.0
+offset_bottom = 108.0
 
 [node name="StateMachine" parent="." unique_id=206004740 node_paths=PackedStringArray("default_state") instance=ExtResource("8_y42te")]
 default_state = NodePath("PlayerStateIdle")
