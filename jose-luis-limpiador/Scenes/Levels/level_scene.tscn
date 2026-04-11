@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dwfjv3mwu2i10" path="res://Scenes/Objects/background_tiles.tscn" id="3_ng3nn"]
 [ext_resource type="PackedScene" uid="uid://cv41ygrw0a3ve" path="res://Scenes/Objects/interactive_tiles.tscn" id="4_r03ic"]
 [ext_resource type="AudioStream" uid="uid://bsc7g3kvesang" path="res://Assets/OST/Victory!.wav" id="6_s333v"]
+[ext_resource type="PackedScene" uid="uid://e02glsccgo17" path="res://Scenes/Objects/standing_water.tscn" id="7_rl6mw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ng3nn"]
 size = Vector2(386, 216)
@@ -36,6 +37,10 @@ shape = SubResource("RectangleShape2D_ng3nn")
 [node name="Victory" type="AudioStreamPlayer" parent="." unique_id=508075567]
 stream = ExtResource("6_s333v")
 volume_db = -8.0
+
+[node name="ContainerStandingWater" type="Node2D" parent="." unique_id=1700283705]
+
+[node name="StandingWater" parent="ContainerStandingWater" unique_id=138579272 instance=ExtResource("7_rl6mw")]
 
 [connection signal="upgrade_clean" from="BackgroundTiles" to="." method="_on_background_tiles_upgrade_clean"]
 [connection signal="upgrade_grime" from="BackgroundTiles" to="." method="_on_background_tiles_upgrade_grime"]
