@@ -1,11 +1,16 @@
 extends TileMapLayer
 
-var value: int = 0
+var dirty_tiles: int = 0
+var clean_tiles: int = 0
+
+signal upgrade_grime(value: int)
+signal upgrade_clean(value: int)
+
 
 func _ready() -> void:
-	value = get_used_cells().size()
-	GlobalScene.grime += get_used_cells().size()
-	
+	dirty_tiles = get_used_cells().size()
+	upgrade_grime.emit(dirty_tiles)
+
 
 func clean(my_position: Vector2) -> void:
 	var center_tile = local_to_map(my_position)
@@ -14,5 +19,5 @@ func clean(my_position: Vector2) -> void:
 		for y in range(-1, 2):
 			erase_cell(center_tile + Vector2i(x, y))
 
-
-	GlobalScene.clean_back = value - get_used_cells().size()
+	clean_tiles = dirty_tiles - get_used_cells().size()
+	upgrade_clean.emit(clean_tiles)

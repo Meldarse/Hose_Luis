@@ -205,7 +205,8 @@ autoplay = "idle"
 [node name="Gun" parent="." unique_id=864036393 instance=ExtResource("4_dfgsd")]
 position = Vector2(0, 4)
 
-[node name="Rope" parent="." unique_id=642230958 node_paths=PackedStringArray("end_point") instance=ExtResource("5_xbekk")]
+[node name="Rope" parent="." unique_id=642230958 node_paths=PackedStringArray("start_point", "end_point") instance=ExtResource("5_xbekk")]
+start_point = NodePath("../Start")
 end_point = NodePath("..")
 
 [node name="Camera2D" parent="." unique_id=917560148 instance=ExtResource("6_5uqce")]
@@ -220,6 +221,10 @@ offset_left = -192.0
 offset_top = -108.0
 offset_right = 192.0
 offset_bottom = 108.0
+
+[node name="Start" type="Marker2D" parent="." unique_id=634697280]
+top_level = true
+position = Vector2(187, 204)
 
 [node name="StateMachine" parent="." unique_id=206004740 node_paths=PackedStringArray("default_state") instance=ExtResource("8_y42te")]
 default_state = NodePath("PlayerStateIdle")

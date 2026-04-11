@@ -51,7 +51,7 @@ _data = {
 
 [node name="DropWater" type="RigidBody2D" unique_id=872678821]
 collision_layer = 16
-collision_mask = 29
+collision_mask = 31
 mass = 0.2
 physics_material_override = SubResource("PhysicsMaterial_4ncsa")
 script = ExtResource("1_8mjmk")
@@ -82,8 +82,7 @@ update_rotation = false
 update_scale = false
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1367156323]
-visible = false
-collision_layer = 0
+collision_layer = 16
 collision_mask = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=361309709]

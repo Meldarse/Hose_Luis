@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://emshcdbpyu5a"]
+
+[ext_resource type="PackedScene" uid="uid://hd32beternkd" path="res://Scenes/Objects/drainage.tscn" id="1_gmal3"]
+[ext_resource type="Script" uid="uid://bg5v3im0flw34" path="res://Scripts/Levels/level_scene.gd" id="1_r03ic"]
+[ext_resource type="PackedScene" uid="uid://rkpher2bte5l" path="res://Scenes/Utility/altitude_zone.tscn" id="2_10gv2"]
+[ext_resource type="PackedScene" uid="uid://dwfjv3mwu2i10" path="res://Scenes/Objects/background_tiles.tscn" id="3_ng3nn"]
+[ext_resource type="PackedScene" uid="uid://cv41ygrw0a3ve" path="res://Scenes/Objects/interactive_tiles.tscn" id="4_r03ic"]
+[ext_resource type="AudioStream" uid="uid://bsc7g3kvesang" path="res://Assets/OST/Victory!.wav" id="6_s333v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ng3nn"]
+size = Vector2(386, 216)
+
+[node name="LevelScene" type="Node2D" unique_id=1494841444]
+script = ExtResource("1_r03ic")
+
+[node name="DrainageSystems" type="Node2D" parent="." unique_id=689951565]
+
+[node name="Drainage" parent="DrainageSystems" unique_id=1113187961 instance=ExtResource("1_gmal3")]
+
+[node name="Altitudes" type="Node2D" parent="." unique_id=1147007926]
+
+[node name="AltitudeZone" parent="Altitudes" unique_id=377734721 instance=ExtResource("2_10gv2")]
+altitude_level = 1
+
+[node name="BackgroundTiles" parent="." unique_id=1191615566 instance=ExtResource("3_ng3nn")]
+
+[node name="InteractiveTiles" parent="." unique_id=609319141 instance=ExtResource("4_r03ic")]
+
+[node name="LevelChange" type="Area2D" parent="." unique_id=971528394]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelChange" unique_id=1471710435]
+shape = SubResource("RectangleShape2D_ng3nn")
+
+[node name="Victory" type="AudioStreamPlayer" parent="." unique_id=508075567]
+stream = ExtResource("6_s333v")
+volume_db = -8.0
+
+[connection signal="upgrade_clean" from="BackgroundTiles" to="." method="_on_background_tiles_upgrade_clean"]
+[connection signal="upgrade_grime" from="BackgroundTiles" to="." method="_on_background_tiles_upgrade_grime"]
+[connection signal="upgrade_clean" from="InteractiveTiles" to="." method="_on_interactive_tiles_upgrade_clean"]
+[connection signal="upgrade_grime" from="InteractiveTiles" to="." method="_on_interactive_tiles_upgrade_grime"]
+[connection signal="body_entered" from="LevelChange" to="." method="_on_level_change_body_entered"]
