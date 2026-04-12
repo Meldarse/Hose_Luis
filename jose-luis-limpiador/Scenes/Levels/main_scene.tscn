@@ -54,6 +54,14 @@ texture = ExtResource("1_coy0t")
 [sub_resource type="TileSet" id="TileSet_nu5rl"]
 sources/0 = SubResource("TileSetAtlasSource_coy0t")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xmwv8"]
+resource_local_to_scene = true
+size = Vector2(371.375, 216)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nl0el"]
+resource_local_to_scene = true
+size = Vector2(384, 216)
+
 [node name="MainScene" type="Node2D" unique_id=257943604]
 
 [node name="FrontalEnvironment" type="TileMapLayer" parent="." unique_id=806561479]
@@ -82,11 +90,8 @@ tile_map_data = PackedByteArray("AAALAAkAAAAAAAMAAAANAAkAAAAAAAMAAAAMAAkAAAAAAAM
 [node name="InteractiveTiles" parent="LevelScene" index="3" unique_id=609319141]
 tile_map_data = PackedByteArray("AAAIAAsAAAAAAAMAAAAKAAsAAAAAAAMAAAALAAsAAAAAAAMAAAAJAAsAAAAAAAMAAAA=")
 
-[node name="LevelChange" parent="LevelScene" index="4" unique_id=971528394]
-position = Vector2(192, 108)
-
-[node name="CollisionShape2D" parent="LevelScene/LevelChange" index="0" unique_id=1471710435]
-position = Vector2(-5, 0)
+[node name="CollisionShape2D" parent="LevelScene/LevelChange" parent_id_path=PackedInt32Array(2080966868, 971528394) index="0" unique_id=1471710435]
+shape = SubResource("RectangleShape2D_xmwv8")
 
 [node name="LevelScene2" parent="." unique_id=1494841444 instance=ExtResource("3_xmwv8")]
 position = Vector2(575, 0)
@@ -96,6 +101,7 @@ tile_map_data = PackedByteArray("AAD2/wsAAAAAAAMAAAD3/wsAAAAAAAMAAAD4/wsAAAAAAAM
 
 [node name="CollisionShape2D" parent="LevelScene2/LevelChange" parent_id_path=PackedInt32Array(1494841444, 971528394) index="0" unique_id=1471710435]
 position = Vector2(0, 108)
+shape = SubResource("RectangleShape2D_nl0el")
 
 [editable path="LevelScene"]
 [editable path="LevelScene2"]

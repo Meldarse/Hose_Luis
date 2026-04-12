@@ -8,8 +8,9 @@
 [ext_resource type="AudioStream" uid="uid://bsc7g3kvesang" path="res://Assets/OST/Victory!.wav" id="6_s333v"]
 [ext_resource type="PackedScene" uid="uid://e02glsccgo17" path="res://Scenes/Objects/standing_water.tscn" id="7_rl6mw"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ng3nn"]
-size = Vector2(386, 216)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rl6mw"]
+resource_local_to_scene = true
+size = Vector2(384, 216)
 
 [node name="LevelScene" type="Node2D" unique_id=1494841444]
 script = ExtResource("1_r03ic")
@@ -32,7 +33,8 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelChange" unique_id=1471710435]
-shape = SubResource("RectangleShape2D_ng3nn")
+position = Vector2(191, 108)
+shape = SubResource("RectangleShape2D_rl6mw")
 
 [node name="Victory" type="AudioStreamPlayer" parent="." unique_id=508075567]
 stream = ExtResource("6_s333v")
